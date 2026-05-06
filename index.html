@@ -62,19 +62,29 @@
       mix-blend-mode: multiply;
     }
 
-    .cursor {
+    .cursor-dot {
       position: fixed;
-      width: 12px; height: 12px;
+      width: 8px; height: 8px;
       background: #0A0A0A;
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
-      transition: width 200ms ease, height 200ms ease, background 200ms ease;
-      mix-blend-mode: difference;
       will-change: transform;
       top: 0; left: 0;
     }
-    .cursor.hover { width: 56px; height: 56px; background: #FFFFFF; }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(10,10,10,0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      will-change: transform;
+      top: 0; left: 0;
+      transition: width 250ms cubic-bezier(0.2,0.8,0.2,1), height 250ms cubic-bezier(0.2,0.8,0.2,1), border-color 200ms ease;
+    }
+    .cursor-dot.hover { }
+    .cursor-ring.hover { width: 54px; height: 54px; border-color: rgba(10,10,10,0.9); }
 
     .progress {
       position: fixed; top: 0; left: 0;
@@ -480,14 +490,15 @@
     }
 
     @media (hover: none) {
-      .cursor { display: none; }
+      .cursor-dot, .cursor-ring { display: none; }
       body { cursor: auto; }
     }
   </style>
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
   <div class="progress" id="progress"></div>
 
   <!-- TOP BAR -->
@@ -1096,27 +1107,37 @@
 
   <script>
     // Custom cursor
-    const cursor = document.getElementById('cursor');
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
     let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
+    let ringX = 0, ringY = 0;
 
     if (window.matchMedia('(hover: hover)').matches) {
       document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        // Dot follows instantly
+        cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
       });
 
-      const animateCursor = () => {
-        cursorX += (mouseX - cursorX) * 0.18;
-        cursorY += (mouseY - cursorY) * 0.18;
-        cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
-        requestAnimationFrame(animateCursor);
+      // Ring follows with slight lag
+      const animateRing = () => {
+        ringX += (mouseX - ringX) * 0.14;
+        ringY += (mouseY - ringY) * 0.14;
+        cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+        requestAnimationFrame(animateRing);
       };
-      animateCursor();
+      animateRing();
 
       document.querySelectorAll('a, button, .faq-q, [data-magnetic]').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        el.addEventListener('mouseenter', () => {
+          cursorDot.classList.add('hover');
+          cursorRing.classList.add('hover');
+        });
+        el.addEventListener('mouseleave', () => {
+          cursorDot.classList.remove('hover');
+          cursorRing.classList.remove('hover');
+        });
       });
     }
 
