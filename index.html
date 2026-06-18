@@ -3,1235 +3,211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REKONSTRÜKSİYON · 100 Günde Eski Sürümünü Sil</title>
-  <meta name="description" content="100 günlük protokol. Altı sütun. 108 sayfa, 8 PDF, 8 şematik diyagram. Motivasyon değil. Mimari.">
-
-  <meta property="og:title" content="REKONSTRÜKSİYON · 100 Günde Eski Sürümünü Sil">
-  <meta property="og:description" content="Eski sürümünün sayılı günleri var. 108 sayfa. 8 PDF. 8 diyagram.">
-  <meta property="og:image" content="profil.jpg">
-  <meta property="og:type" content="product">
+  <title>Katalog · Ürünler</title>
+  <meta name="description" content="Tüm ürünler. Bir karta tıkla, sayfasına git.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['Fraunces', 'Georgia', 'serif'],
-            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-          },
-          colors: {
-            ink: '#0A0A0A',
-            paper: '#FFFFFF',
-            cream: '#F5F1E8',
-            mute: '#3F3F3F',
-          },
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root { --grain-opacity: 0.04; }
+    :root {
+      --ink: #0B0A09;
+      --paper: #FFFFFF;
+      --bg: #EFEDE8;
+      --mute: #6B6660;
+      --faint: #908B83;
+      --line: #DCD8D1;
+      --line-strong: #C7C2B9;
+    }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Fraunces', Georgia, serif;
-      font-feature-settings: "kern", "liga", "onum", "ss01";
-      background: #FFFFFF;
-      color: #0A0A0A;
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
       -webkit-font-smoothing: antialiased;
-      cursor: none;
-      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      line-height: 1.5;
+      font-feature-settings: "cv05", "cv08", "ss01";
     }
-    @media (max-width: 768px) { body { cursor: auto; } }
-    ::selection { background: #0A0A0A; color: #FFFFFF; }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      opacity: var(--grain-opacity);
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-      mix-blend-mode: multiply;
-    }
-
-    .cursor-dot {
-      position: fixed;
-      width: 8px; height: 8px;
-      background: #0A0A0A;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      will-change: transform;
-      top: 0; left: 0;
-    }
-    .cursor-ring {
-      position: fixed;
-      width: 36px; height: 36px;
-      border: 1.5px solid rgba(10,10,10,0.6);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      will-change: transform;
-      top: 0; left: 0;
-      transition: width 250ms cubic-bezier(0.2,0.8,0.2,1), height 250ms cubic-bezier(0.2,0.8,0.2,1), border-color 200ms ease;
-    }
-    .cursor-dot.hover { }
-    .cursor-ring.hover { width: 54px; height: 54px; border-color: rgba(10,10,10,0.9); }
-
-    .progress {
-      position: fixed; top: 0; left: 0;
-      height: 2px; background: #0A0A0A;
-      z-index: 1000;
-      width: 100%;
-      transform: scaleX(0);
-      transform-origin: 0 50%;
-      transition: transform 80ms linear;
-    }
-
-    .display {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      letter-spacing: -0.045em;
-      line-height: 0.85;
-      font-variation-settings: "opsz" 144, "SOFT" 0;
-    }
-    .display-italic {
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      font-variation-settings: "opsz" 144, "SOFT" 50;
-    }
-    .display-outline {
-      -webkit-text-stroke: 2px #0A0A0A;
-      color: transparent;
-    }
+    ::selection { background: var(--ink); color: var(--paper); }
+    a { color: inherit; text-decoration: none; }
     .mono { font-family: 'JetBrains Mono', monospace; }
 
-    .marquee {
-      display: flex;
-      overflow: hidden;
-      border-top: 1.5px solid #0A0A0A;
-      border-bottom: 1.5px solid #0A0A0A;
-      background: #FFFFFF;
-      padding: 0.85rem 0;
-      white-space: nowrap;
-    }
-    .marquee-track {
-      display: flex;
-      gap: 3rem;
-      animation: marquee 28s linear infinite;
-      flex-shrink: 0;
-      padding-right: 3rem;
-    }
-    .marquee-track span {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      flex-shrink: 0;
-    }
-    .marquee-track .dot { font-size: 1.4rem; line-height: 1; }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+    .wrap { max-width: 540px; margin: 0 auto; padding: 0 1.25rem; }
 
-    .cta {
+    /* Header */
+    header {
+      display: flex; justify-content: center; align-items: center; gap: 0.6rem;
+      padding: 1.05rem 0; border-bottom: 1px solid var(--line);
+    }
+    .brand { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.32em; font-weight: 500; }
+    .brand-dot { width: 5px; height: 5px; background: var(--ink); border-radius: 50%; }
+
+    /* Intro */
+    .intro { text-align: center; padding: 2.75rem 0 1.9rem; }
+    .avatar {
+      width: 78px; height: 78px; border-radius: 50%;
+      object-fit: cover; display: block; margin: 0 auto 1.25rem;
+      border: 1px solid var(--line-strong);
+      box-shadow: 0 6px 18px -6px rgba(11,10,9,0.3);
+      filter: contrast(1.04) saturate(1.02);
+    }
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--faint); margin-bottom: 0.85rem;
+    }
+    .intro h1 { margin: 0; font-weight: 800; letter-spacing: -0.035em; font-size: 1.85rem; line-height: 1.04; }
+    .intro p { margin: 0.65rem auto 0; max-width: 32ch; font-size: 0.95rem; color: var(--mute); }
+
+    /* Cards */
+    .stack { display: flex; flex-direction: column; gap: 1rem; padding: 0.5rem 0 3rem; }
+
+    .card {
       position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      background: #0A0A0A;
-      color: #FFFFFF;
-      padding: 1.1rem 1.5rem 1.1rem 1.75rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 500;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 1.5px solid #0A0A0A;
-      transition: all 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
-      text-decoration: none;
-      will-change: transform;
-    }
-    .cta:hover {
-      background: #FFFFFF;
-      color: #0A0A0A;
-      transform: translate(-2px, -2px);
-      box-shadow: 4px 4px 0 #0A0A0A;
-    }
-    .cta-arrow {
-      display: inline-block;
-      transition: transform 200ms ease;
-      font-size: 1.1rem;
-    }
-    .cta:hover .cta-arrow { transform: translateX(4px); }
-    .cta-large { padding: 1.5rem 2rem 1.5rem 2.25rem; font-size: 0.95rem; }
-    .cta-invert { background: #FFFFFF; color: #0A0A0A; border-color: #FFFFFF; }
-    .cta-invert:hover {
-      background: transparent;
-      color: #FFFFFF;
-      box-shadow: 4px 4px 0 #FFFFFF;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 900ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 80ms; }
-    .reveal-delay-2 { transition-delay: 160ms; }
-    .reveal-delay-3 { transition-delay: 240ms; }
-    .reveal-delay-4 { transition-delay: 320ms; }
-
-    .sec-num {
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      font-size: clamp(7rem, 22vw, 18rem);
-      line-height: 0.8;
-      letter-spacing: -0.06em;
-      color: #0A0A0A;
-      font-variation-settings: "opsz" 144;
-    }
-    .sec-num-outline { -webkit-text-stroke: 1.5px #0A0A0A; color: transparent; }
-    .sec-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-    }
-
-    .hero-img-frame {
-      position: relative;
-      border: 1.5px solid #0A0A0A;
+      display: block;
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
       overflow: hidden;
-      background: #F5F1E8;
-    }
-    .hero-img-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(0.85) contrast(1.08) brightness(0.96);
-      transition: filter 800ms ease, transform 12s ease;
-    }
-    .hero-img-frame:hover img {
-      filter: grayscale(0) contrast(1.05) brightness(1);
-      transform: scale(1.03);
-    }
-    .img-stamp {
-      position: absolute;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      background: #FFFFFF;
-      color: #0A0A0A;
-      padding: 0.4rem 0.7rem;
-      border: 1px solid #0A0A0A;
-      z-index: 2;
-    }
-    .img-stamp.tl { top: 1rem; left: 1rem; }
-    .img-stamp.br { bottom: 1rem; right: 1rem; }
-    .img-corner {
-      position: absolute;
-      width: 14px; height: 14px;
-      border: 1.5px solid #0A0A0A;
-      background: #FFFFFF;
-      z-index: 3;
-    }
-    .img-corner.tl { top: -7px; left: -7px; }
-    .img-corner.tr { top: -7px; right: -7px; }
-    .img-corner.bl { bottom: -7px; left: -7px; }
-    .img-corner.br { bottom: -7px; right: -7px; }
-
-    .file-table { border-top: 2px solid #0A0A0A; }
-    .file-row {
-      display: grid;
-      grid-template-columns: 60px 1fr auto;
-      gap: 1.5rem;
-      padding: 1.25rem 0.5rem;
-      border-bottom: 1px solid #D4D4D4;
-      align-items: baseline;
-      transition: background 200ms ease, padding-left 200ms ease;
-    }
-    .file-row:hover { background: #FFFFFF; padding-left: 1.25rem; }
-    .file-row:last-child { border-bottom: 2px solid #0A0A0A; }
-    .file-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #6B6B6B;
-      letter-spacing: 0.1em;
-    }
-    .file-name {
-      font-weight: 600;
-      font-size: 1.35rem;
-      letter-spacing: -0.015em;
-      font-variation-settings: "opsz" 36;
-    }
-    .file-desc {
-      font-style: italic;
-      color: #3F3F3F;
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-top: 0.4rem;
-      max-width: 70ch;
-    }
-    .file-pages {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: #6B6B6B;
-      white-space: nowrap;
-      align-self: start;
-    }
-
-    .pull {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(2rem, 5.5vw, 5rem);
-      line-height: 1.0;
-      letter-spacing: -0.025em;
-      font-variation-settings: "opsz" 144, "SOFT" 80;
-    }
-
-    .faq-item { border-bottom: 1px solid #D4D4D4; }
-    .faq-item:first-child { border-top: 2px solid #0A0A0A; }
-    .faq-item:last-child { border-bottom: 2px solid #0A0A0A; }
-    .faq-q {
-      cursor: pointer;
-      padding: 1.5rem 0.5rem;
-      display: grid;
-      grid-template-columns: 60px 1fr auto;
-      gap: 1.5rem;
-      align-items: baseline;
-      font-weight: 600;
-      font-size: 1.25rem;
-      letter-spacing: -0.015em;
-      transition: background 200ms ease, padding-left 200ms ease;
-    }
-    .faq-q:hover { background: #F5F1E8; padding-left: 1.25rem; }
-    .faq-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: #6B6B6B;
-      letter-spacing: 0.1em;
-    }
-    .faq-toggle {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1rem;
-      transition: transform 250ms ease;
-    }
-    .faq-item.open .faq-toggle { transform: rotate(45deg); }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
-      padding: 0 0.5rem 0 76px;
-      font-style: italic;
-      color: #3F3F3F;
-      line-height: 1.65;
-      font-size: 1.05rem;
-    }
-    .faq-item.open .faq-a { max-height: 600px; padding-bottom: 1.5rem; }
-
-    .sticky-cta {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: #0A0A0A;
-      color: #FFFFFF;
-      transform: translateY(100%);
-      transition: transform 380ms cubic-bezier(0.2, 0.8, 0.2, 1);
-      z-index: 100;
-      border-top: 1.5px solid #0A0A0A;
-    }
-    .sticky-cta.show { transform: translateY(0); }
-    .sticky-cta a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.85rem 1.5rem;
-      max-width: 1280px;
-      margin: 0 auto;
-      gap: 1rem;
-      text-decoration: none;
-      color: #FFFFFF;
-    }
-    .sticky-cta a:hover { background: #1A1A1A; }
-    .sticky-cta .label {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: -0.01em;
-    }
-    .sticky-cta .price {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .hero-num-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #6B6B6B;
-    }
-
-    .big-stat {
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      font-size: clamp(3.5rem, 9vw, 7rem);
-      line-height: 0.85;
-      letter-spacing: -0.04em;
-      font-variation-settings: "opsz" 144;
-    }
-
-    .inline-cta-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 2rem 0;
-      border-top: 1px solid #0A0A0A;
-      border-bottom: 1px solid #0A0A0A;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .inline-cta-text {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-size: 1.2rem;
-      max-width: 50ch;
-    }
-
-    .parallax-slow { will-change: transform; }
-
-    .filter-card {
-      padding: 2.5rem 2rem;
-      border: 1.5px solid #0A0A0A;
-      background: #FFFFFF;
-      transition: background 300ms ease, transform 300ms ease, box-shadow 300ms ease;
-    }
-    .filter-card.dark { background: #0A0A0A; color: #FFFFFF; }
-    .filter-card:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 #0A0A0A; }
-    .filter-list { list-style: none; padding: 0; margin: 0; counter-reset: filter; }
-    .filter-list li {
-      counter-increment: filter;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid currentColor;
-      opacity: 0.85;
-      font-size: 1.05rem;
-      line-height: 1.5;
-      display: flex;
-      gap: 1rem;
-    }
-    .filter-list li:last-child { border-bottom: none; }
-    .filter-list li::before {
-      content: counter(filter, decimal-leading-zero);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      opacity: 0.6;
-      flex-shrink: 0;
-      padding-top: 0.3rem;
-    }
-
-    .asterism {
       text-align: center;
-      font-size: 1.5rem;
-      letter-spacing: 1rem;
-      color: #0A0A0A;
-      margin: 4rem 0;
+      box-shadow: 0 1px 1px rgba(11,10,9,0.04);
+      transition: transform 240ms cubic-bezier(.2,.7,.2,1), box-shadow 240ms cubic-bezier(.2,.7,.2,1), border-color 240ms ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px -10px rgba(11,10,9,0.22);
+      border-color: var(--ink);
     }
 
-    .diagram-wrap {
-      border: 1.5px solid #0A0A0A;
-      padding: clamp(1.5rem, 4vw, 3.5rem);
-      background: #FFFFFF;
+    /* Designed media block (no photo) */
+    .card-media {
       position: relative;
-    }
-    .diagram-wrap::before, .diagram-wrap::after {
-      content: '';
-      position: absolute;
-      width: 14px; height: 14px;
-      background: #FFFFFF;
-      border: 1.5px solid #0A0A0A;
-    }
-    .diagram-wrap::before { top: -8px; left: -8px; }
-    .diagram-wrap::after { bottom: -8px; right: -8px; }
-
-    .final-cta-section {
-      background: #0A0A0A;
-      color: #FFFFFF;
-      position: relative;
+      aspect-ratio: 21 / 9;
       overflow: hidden;
+      background:
+        radial-gradient(120% 140% at 50% -20%, #2A2622 0%, #0B0A09 60%);
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-media::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 22px 22px;
+      mask-image: radial-gradient(120% 120% at 50% 50%, black 30%, transparent 75%);
+    }
+    .media-glyph {
+      position: relative; z-index: 1;
+      font-weight: 800; letter-spacing: -0.04em;
+      font-size: 2.1rem; color: var(--paper);
+      text-transform: uppercase;
+    }
+    .index-chip {
+      position: absolute; top: 0.7rem; left: 0.7rem; z-index: 2;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em;
+      color: var(--paper); background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(4px);
+      padding: 0.2rem 0.5rem; border-radius: 5px;
     }
 
-    @media (max-width: 768px) {
-      .file-row { grid-template-columns: 50px 1fr; }
-      .file-row .file-pages { grid-column: 2; padding-top: 0.4rem; }
-      .faq-q { grid-template-columns: 50px 1fr auto; gap: 0.75rem; }
-      .faq-a { padding-left: 65px; }
-    }
+    .card-body { padding: 1.4rem 1.5rem 1.55rem; }
 
-    @media (hover: none) {
-      .cursor-dot, .cursor-ring { display: none; }
-      body { cursor: auto; }
+    .card-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
+      color: var(--mute);
+      border: 1px solid var(--line-strong); border-radius: 999px;
+      padding: 0.28rem 0.7rem; margin-bottom: 0.85rem;
     }
+    .card-title { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.03em; margin: 0; }
+    .card-desc { margin: 0.4rem auto 0; max-width: 38ch; font-size: 0.92rem; color: var(--mute); }
+
+    .specs {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0.3rem 0.8rem;
+      margin: 1rem 0 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint);
+    }
+    .specs .sep { opacity: 0.4; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--ink); color: var(--paper); font-weight: 600;
+      font-size: 0.8rem; letter-spacing: 0.005em;
+      padding: 0.72rem 1.35rem; border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(11,10,9,0.25);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .card:hover .btn { transform: translateY(-1px); box-shadow: 0 6px 16px -4px rgba(11,10,9,0.4); }
+    .btn .arrow { transition: transform 200ms ease; }
+    .card:hover .btn .arrow { transform: translateX(3px); }
+    .price-note { margin-top: 0.65rem; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); }
+
+    /* Soon */
+    .soon { text-align: center; border: 1px dashed var(--line-strong); border-radius: 10px; padding: 1.6rem 1.25rem; color: var(--faint); }
+    .soon .plus { font-size: 1.3rem; font-weight: 300; line-height: 1; }
+    .soon .label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 0.4rem; }
+
+    footer { border-top: 1px solid var(--line); padding: 1.8rem 0; text-align: center; }
+    footer div { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); }
   </style>
 </head>
 <body>
 
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-  <div class="progress" id="progress"></div>
-
-  <!-- TOP BAR -->
-  <header class="border-b border-ink/15 bg-paper relative z-10">
-    <div class="max-w-[1400px] mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="mono text-xs tracking-[0.3em] font-medium">REKONSTRÜKSİYON</div>
-      <div class="mono text-[0.65rem] tracking-[0.25em] text-mute hidden sm:flex gap-4 items-center">
-        <span>v1.0</span>
-        <span class="opacity-30">·</span>
-        <span>2026</span>
-        <span class="opacity-30">·</span>
-        <span>TR</span>
-      </div>
-    </div>
+  <header>
+    <span class="brand-dot"></span>
+    <span class="brand">KATALOG</span>
   </header>
 
-  <!-- HERO -->
-  <section class="relative px-6 pt-12 sm:pt-20 pb-12 sm:pb-16 overflow-hidden">
-    <div class="max-w-[1400px] mx-auto">
-      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
-
-        <div class="lg:col-span-7 flex flex-col">
-          <div class="hero-num-tag mb-8 reveal">
-            <span class="opacity-50">[</span> 100 GÜN PROTOKOLÜ <span class="opacity-50">/</span> v1.0 <span class="opacity-50">]</span>
-          </div>
-
-          <h1 class="display reveal reveal-delay-1" style="font-size: clamp(3.5rem, 11vw, 9.5rem);">
-            <span class="block">ESKİ</span>
-            <span class="block">SÜRÜMÜN</span>
-            <span class="block display-italic" style="font-size: 0.92em; padding-left: 0.6em;">silinecek.</span>
-          </h1>
-
-          <div class="mt-12 max-w-xl reveal reveal-delay-2">
-            <p class="text-xl sm:text-2xl leading-snug" style="font-variation-settings: 'opsz' 24;">
-              108 sayfa. 8 PDF. Altı sütun, eş zamanlı çalışan.
-              <span class="italic block mt-2">Motivasyon değil; mimari.</span>
-            </p>
-          </div>
-
-          <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:items-center reveal reveal-delay-3">
-            <a href="https://eraysona.lemonsqueezy.com/checkout/buy/f8c5081a-630f-4d14-a8f0-70f0c569b1a5" class="cta cta-large" data-magnetic>
-              <span>Protokole eriş, $6 USD</span>
-              <span class="cta-arrow">→</span>
-            </a>
-            <p class="mono text-[0.7rem] tracking-[0.15em] text-mute uppercase">
-              Anlık teslim · Lemon Squeezy
-            </p>
-          </div>
-
-          <div class="mt-16 lg:mt-auto pt-12 grid grid-cols-4 gap-3 lg:gap-6 reveal reveal-delay-4 border-t border-ink/15">
-            <div>
-              <div class="big-stat" data-target="108">0</div>
-              <div class="mono text-[0.6rem] tracking-[0.2em] text-mute uppercase mt-2">Sayfa</div>
-            </div>
-            <div>
-              <div class="big-stat" data-target="8">0</div>
-              <div class="mono text-[0.6rem] tracking-[0.2em] text-mute uppercase mt-2">Dosya</div>
-            </div>
-            <div>
-              <div class="big-stat" data-target="6">0</div>
-              <div class="mono text-[0.6rem] tracking-[0.2em] text-mute uppercase mt-2">Sütun</div>
-            </div>
-            <div>
-              <div class="big-stat" data-target="100">0</div>
-              <div class="mono text-[0.6rem] tracking-[0.2em] text-mute uppercase mt-2">Gün</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5 flex items-start lg:pt-12 reveal reveal-delay-2">
-          <div class="hero-img-frame w-full aspect-square parallax-slow" data-parallax="0.15">
-            <span class="img-corner tl"></span>
-            <span class="img-corner tr"></span>
-            <span class="img-corner bl"></span>
-            <span class="img-corner br"></span>
-            <span class="img-stamp tl">REK · v1.0</span>
-            <span class="img-stamp br">100 GÜN / 6 SÜTUN</span>
-            <img src="profil.jpg" alt="Rekonstrüksiyon" loading="eager" />
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="wrap intro">
+    <img class="avatar" src="profil.jpg" alt="" />
+    <div class="eyebrow">Ürün Kataloğu</div>
+    <h1>Bir ürün seç, başla.</h1>
+    <p>Karta tıkla, ürünün sayfasına geç.</p>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee">
-    <div class="marquee-track">
-      <span>Rekonstrüksiyon</span><span class="dot">●</span>
-      <span>100 Gün Protokolü</span><span class="dot">●</span>
-      <span>Eş Zamanlı Altı Sütun</span><span class="dot">●</span>
-      <span>108 Sayfa</span><span class="dot">●</span>
-      <span>8 PDF</span><span class="dot">●</span>
-      <span>8 Şematik Diyagram</span><span class="dot">●</span>
-      <span>v1.0 / 2026</span><span class="dot">●</span>
-      <span>Motivasyon Değil. Mimari.</span><span class="dot">●</span>
-      <span>Rekonstrüksiyon</span><span class="dot">●</span>
-      <span>100 Gün Protokolü</span><span class="dot">●</span>
-      <span>Eş Zamanlı Altı Sütun</span><span class="dot">●</span>
-      <span>108 Sayfa</span><span class="dot">●</span>
-      <span>8 PDF</span><span class="dot">●</span>
-      <span>8 Şematik Diyagram</span><span class="dot">●</span>
-      <span>v1.0 / 2026</span><span class="dot">●</span>
-      <span>Motivasyon Değil. Mimari.</span><span class="dot">●</span>
-    </div>
-  </div>
+  <main class="wrap">
+    <div class="stack">
 
-  <!-- § 01 / TANI -->
-  <section class="px-6 py-24 sm:py-36 relative">
-    <div class="max-w-[1400px] mx-auto">
-      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        <div class="lg:col-span-5 lg:sticky lg:top-12">
-          <div class="sec-label text-mute mb-4 reveal">§ 01 / 06 · Tanı</div>
-          <div class="sec-num reveal">01</div>
+      <!-- Ürün 01 -->
+      <a class="card" href="rekonstruksiyon.html">
+        <div class="card-media">
+          <span class="index-chip">01</span>
+          <span class="media-glyph">Rekonstrüksiyon</span>
         </div>
-        <div class="lg:col-span-7">
-          <h2 class="display reveal" style="font-size: clamp(2.25rem, 5.5vw, 4.5rem);">
-            Bu sayfada olman <span class="display-italic">tesadüf değil.</span>
-          </h2>
-          <div class="mt-12 space-y-6 text-lg sm:text-xl leading-relaxed reveal reveal-delay-1" style="font-variation-settings: 'opsz' 18;">
-            <p>Eski sürümünün hayatını yaşadığını biliyorsun. Bu farkındalığa rağmen bir türlü taşınamadın.</p>
-            <p>Kendine söz verip tutmadın. O sözlerin değer kaybettiğini fark ettin. <em>Bir sonraki "pazartesi başlıyorum" cümlesini bile artık kendin de pek inandırıcı bulmuyorsun.</em></p>
-            <p>Etrafındaki çoğu insan seni şu an olduğun versiyonunda tutmaya programlanmış. Sevmedikleri için değil; daha iyi versiyonun mevcut sosyal denklemde bir yeri olmadığı için.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PULL QUOTE -->
-  <section class="px-6 py-20 sm:py-32 border-t border-ink/15">
-    <div class="max-w-[1200px] mx-auto reveal">
-      <p class="pull">
-        Bu protokol motivasyon satmıyor.<br>
-        Eski sürümünün cenazesini örgütlemenin <span class="display-outline">mühendislik</span> tasarımı.
-      </p>
-    </div>
-  </section>
-
-  <!-- § 02 / PAKET -->
-  <section class="px-6 py-24 sm:py-36 border-t border-ink/15 bg-cream relative">
-    <div class="max-w-[1400px] mx-auto">
-      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
-
-        <div class="lg:col-span-5">
-          <div class="sec-label text-mute mb-4 reveal">§ 02 / 06 · İçerik</div>
-          <div class="sec-num sec-num-outline reveal">02</div>
-          <h2 class="display mt-8 reveal reveal-delay-1" style="font-size: clamp(2.25rem, 5vw, 4rem);">
-            Sekiz dosya.<br>
-            <span class="display-italic">Tek protokol.</span>
-          </h2>
-          <p class="mt-8 text-lg italic text-mute max-w-md reveal reveal-delay-2">
-            Her dosya bağımsız okunabilir; ama birlikte tek sistem.
-          </p>
-        </div>
-
-        <div class="lg:col-span-7 reveal reveal-delay-2">
-          <div class="mono text-[0.65rem] tracking-[0.25em] text-mute uppercase mb-3 flex justify-between">
-            <span>İndeks</span>
-            <span>108 sf / 8 dosya</span>
-          </div>
-
-          <div class="file-table">
-            <div class="file-row">
-              <div class="file-num">00</div>
-              <div>
-                <div class="file-name">Önsöz</div>
-                <div class="file-desc">Niye motivasyon hile, niye bu kitap pasif okumaya kapalı, niye 100 gün.</div>
-              </div>
-              <div class="file-pages">08 SF</div>
-            </div>
-            <div class="file-row">
-              <div class="file-num">01</div>
-              <div>
-                <div class="file-name">Sistem Arızası</div>
-                <div class="file-desc">Niye çoğu insan değişemiyor: yedi aldatıcı cümle, irade vs mimari, üç kişi üç sonuç.</div>
-              </div>
-              <div class="file-pages">11 SF</div>
-            </div>
-            <div class="file-row">
-              <div class="file-num">02</div>
-              <div>
-                <div class="file-name">Beynin Hikâye Makinesi</div>
-                <div class="file-desc">Self-perception teorisi, nöroplastisite, Hebb yasası. Kimlik nasıl yazılır, nasıl silinir.</div>
-              </div>
-              <div class="file-pages">11 SF</div>
-            </div>
-            <div class="file-row">
-              <div class="file-num">03</div>
-              <div>
-                <div class="file-name">Altı Sütunun Mimarisi</div>
-                <div class="file-desc">Niye altı, niye hepsi aynı anda; çöküşün altı adımlık anatomisi; bekleyen kayıplar.</div>
-              </div>
-              <div class="file-pages">13 SF</div>
-            </div>
-            <div class="file-row">
-              <div class="file-num">04</div>
-              <div>
-                <div class="file-name">Sütun I / Kimlik Revizyonu</div>
-                <div class="file-desc">Eski sürümünün cenazesi: dört saldırı kalıbı, Hell Yes filtresi, Act As If, sosyal taahhüt cihazları.</div>
-              </div>
-              <div class="file-pages">18 SF</div>
-            </div>
-            <div class="file-row">
-              <div class="file-num">05</div>
-              <div>
-                <div class="file-name">Okuma ve İzleme Operasyonu</div>
-                <div class="file-desc">Sütun bazında küratörlü kaynak listesi: 30+ kitap, podcast, kanal, uygulama.</div>
-              </div>
-              <div class="file-pages">14 SF</div>
-            </div>
-            <div class="file-row">
-              <div class="file-num">06</div>
-              <div>
-                <div class="file-name">100 Günlük Operasyon Takvimi</div>
-                <div class="file-desc">Gün gün ve hafta hafta protokol. Dört faz, üç denetim noktası, günlük şablonlar.</div>
-              </div>
-              <div class="file-pages">13 SF</div>
-            </div>
-            <div class="file-row">
-              <div class="file-num">07</div>
-              <div>
-                <div class="file-name">Acil Müdahale Kılavuzu</div>
-                <div class="file-desc">Düştüğünde ne yapacağın: 12 senaryo, 30 anti-cope script, 60 dakika protokolü.</div>
-              </div>
-              <div class="file-pages">20 SF</div>
-            </div>
-          </div>
-
-          <p class="mono text-[0.65rem] tracking-[0.25em] text-mute uppercase mt-3">
-            + 8 şematik diyagram (sütun mimarisi, çöküş anatomisi, karar piramidi, timeline...)
-          </p>
-        </div>
-      </div>
-
-      <div class="mt-20 inline-cta-wrap reveal">
-        <div class="inline-cta-text">
-          Sekiz dosyaya tek tıkla, anlık teslim. <em class="opacity-60">Bekleme yok.</em>
-        </div>
-        <a href="https://eraysona.lemonsqueezy.com/checkout/buy/f8c5081a-630f-4d14-a8f0-70f0c569b1a5" class="cta" data-magnetic>
-          <span>Eriş, $6 USD</span>
-          <span class="cta-arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- § 03 / MEKANIZMA -->
-  <section class="px-6 py-24 sm:py-36 border-t border-ink/15 relative">
-    <div class="max-w-[1400px] mx-auto">
-
-      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        <div class="lg:col-span-5 lg:sticky lg:top-12">
-          <div class="sec-label text-mute mb-4 reveal">§ 03 / 06 · Mekanizma</div>
-          <div class="sec-num reveal">03</div>
-        </div>
-
-        <div class="lg:col-span-7">
-          <h2 class="display reveal" style="font-size: clamp(2.25rem, 5.5vw, 4.5rem);">
-            Niye 100 gün.<br><span class="display-italic">Niye altı sütun.</span>
-          </h2>
-          <div class="mt-12 space-y-6 text-lg leading-relaxed reveal reveal-delay-1" style="font-variation-settings: 'opsz' 18;">
-            <p>Bilim, ortalama alışkanlık edinme süresinin 66 gün olduğunu söylüyor (Lally et al., 2010). 21 gün kuralı bir mit; gerçek tampon en az 100 gün.</p>
-            <p>Ama mesele alışkanlık değil; <strong>sistem.</strong> İnsan hayatı altı birbirine bağlı düğümden ibaret: kimlik, beden, beceri, çevre, psikoloji, sosyal. Birini çekersen diğerleri akıyor. <em>Sadece spor yapmak yetmiyor; çevreni temizlemediysen 6. ayda erimeye başlıyor.</em></p>
-            <p>Bu protokol altı sütunu eş zamanlı inşa ediyor; açık büfe değil. Çünkü sistemler parça olarak değil, <strong>bütün olarak</strong> çalışır.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-20 reveal">
-        <div class="diagram-wrap">
-          <div class="mono text-[0.65rem] tracking-[0.25em] text-mute uppercase mb-6 flex justify-between flex-wrap gap-2">
-            <span>Şekil 3.1 / Altı Sütun Mimarisi</span>
-            <span>Bileşik Döngü</span>
-          </div>
-
-          <svg viewBox="0 0 600 580" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-2xl mx-auto block" style="font-family: 'Fraunces', serif;">
-            <g stroke="black" stroke-width="0.5" opacity="0.18" fill="none">
-              <line x1="300" y1="100" x2="475" y2="200"/>
-              <line x1="300" y1="100" x2="475" y2="380"/>
-              <line x1="300" y1="100" x2="300" y2="480"/>
-              <line x1="300" y1="100" x2="125" y2="380"/>
-              <line x1="300" y1="100" x2="125" y2="200"/>
-              <line x1="475" y1="200" x2="475" y2="380"/>
-              <line x1="475" y1="200" x2="300" y2="480"/>
-              <line x1="475" y1="200" x2="125" y2="380"/>
-              <line x1="475" y1="200" x2="125" y2="200"/>
-              <line x1="475" y1="380" x2="300" y2="480"/>
-              <line x1="475" y1="380" x2="125" y2="380"/>
-              <line x1="475" y1="380" x2="125" y2="200"/>
-              <line x1="300" y1="480" x2="125" y2="380"/>
-              <line x1="300" y1="480" x2="125" y2="200"/>
-              <line x1="125" y1="380" x2="125" y2="200"/>
-            </g>
-            <polygon points="300,100 475,200 475,380 300,480 125,380 125,200" fill="none" stroke="black" stroke-width="0.9" opacity="0.5"/>
-            <g fill="black">
-              <rect x="235" y="65" width="130" height="70" fill="white" stroke="black" stroke-width="1.5"/>
-              <text x="300" y="92" text-anchor="middle" font-size="9" letter-spacing="2">SÜTUN I</text>
-              <text x="300" y="111" text-anchor="middle" font-size="14" font-weight="bold">Kimlik</text>
-              <text x="300" y="128" text-anchor="middle" font-size="8.5" font-style="italic">iç hikâye</text>
-              <rect x="410" y="165" width="130" height="70" fill="white" stroke="black" stroke-width="1.5"/>
-              <text x="475" y="192" text-anchor="middle" font-size="9" letter-spacing="2">SÜTUN II</text>
-              <text x="475" y="211" text-anchor="middle" font-size="14" font-weight="bold">Beden</text>
-              <text x="475" y="228" text-anchor="middle" font-size="8.5" font-style="italic">fizyolojik zemin</text>
-              <rect x="410" y="345" width="130" height="70" fill="white" stroke="black" stroke-width="1.5"/>
-              <text x="475" y="372" text-anchor="middle" font-size="9" letter-spacing="2">SÜTUN III</text>
-              <text x="475" y="391" text-anchor="middle" font-size="14" font-weight="bold">Beceri</text>
-              <text x="475" y="408" text-anchor="middle" font-size="8.5" font-style="italic">üretim kapasitesi</text>
-              <rect x="235" y="445" width="130" height="70" fill="white" stroke="black" stroke-width="1.5"/>
-              <text x="300" y="472" text-anchor="middle" font-size="9" letter-spacing="2">SÜTUN IV</text>
-              <text x="300" y="491" text-anchor="middle" font-size="14" font-weight="bold">Çevre</text>
-              <text x="300" y="508" text-anchor="middle" font-size="8.5" font-style="italic">fiziksel + dijital</text>
-              <rect x="60" y="345" width="130" height="70" fill="white" stroke="black" stroke-width="1.5"/>
-              <text x="125" y="372" text-anchor="middle" font-size="9" letter-spacing="2">SÜTUN V</text>
-              <text x="125" y="391" text-anchor="middle" font-size="14" font-weight="bold">Psikoloji</text>
-              <text x="125" y="408" text-anchor="middle" font-size="8.5" font-style="italic">stres-tepki</text>
-              <rect x="60" y="165" width="130" height="70" fill="white" stroke="black" stroke-width="1.5"/>
-              <text x="125" y="192" text-anchor="middle" font-size="9" letter-spacing="2">SÜTUN VI</text>
-              <text x="125" y="211" text-anchor="middle" font-size="14" font-weight="bold">Sosyal</text>
-              <text x="125" y="228" text-anchor="middle" font-size="8.5" font-style="italic">yakın çevre</text>
-            </g>
-            <g text-anchor="middle">
-              <text x="300" y="285" font-size="8" letter-spacing="3">BİLEŞİK</text>
-              <text x="300" y="300" font-size="8" letter-spacing="3">DÖNGÜ</text>
-            </g>
-          </svg>
-
-          <p class="mono text-[0.65rem] tracking-[0.2em] text-mute uppercase mt-8 text-center">
-            Pakette toplam 8 şematik. Bu, ilki.
-          </p>
-        </div>
-      </div>
-
-      <div class="mt-20 inline-cta-wrap reveal">
-        <div class="inline-cta-text">
-          Mekanizmayı gördün. <em>Şimdi sahaya çıkma sırası.</em>
-        </div>
-        <a href="https://eraysona.lemonsqueezy.com/checkout/buy/f8c5081a-630f-4d14-a8f0-70f0c569b1a5" class="cta" data-magnetic>
-          <span>Sistemi başlat, $6 USD</span>
-          <span class="cta-arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- § 04 / FİLTRE -->
-  <section class="px-6 py-24 sm:py-36 border-t border-ink/15 relative">
-    <div class="max-w-[1400px] mx-auto">
-
-      <div class="text-center mb-20">
-        <div class="sec-label text-mute mb-4 reveal">§ 04 / 06 · Filtre</div>
-        <div class="sec-num reveal" style="font-size: clamp(5rem, 16vw, 14rem);">04</div>
-        <h2 class="display mt-8 reveal reveal-delay-1" style="font-size: clamp(2rem, 5vw, 4rem);">
-          Bu protokol <span class="display-italic">herkese</span> uygun değil.
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
-        <div class="filter-card reveal">
-          <div class="mono text-[0.7rem] tracking-[0.3em] uppercase mb-2 opacity-60">Yanlış adres</div>
-          <h3 class="display mb-8" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem);">
-            Kimin için <span class="display-italic">değil.</span>
-          </h3>
-          <ul class="filter-list">
-            <li>Hayatına bir şey "eklemek" isteyenler için. Bu çıkarma kitabı.</li>
-            <li>"Önce iç dünyam" diyenler için. İç dünya, dış sistemden sonra düzelir.</li>
-            <li>Sosyal medyada transformation izleyip duygusal anlamda dönüşmüş hissedenler için.</li>
-            <li>Mükemmeliyetçi olduğunu söyleyenler için. Mükemmeliyetçilik, başlamamak için bahane.</li>
-          </ul>
-        </div>
-
-        <div class="filter-card dark reveal reveal-delay-1">
-          <div class="mono text-[0.7rem] tracking-[0.3em] uppercase mb-2 opacity-60">Doğru adres</div>
-          <h3 class="display mb-8" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem);">
-            Kimin <span class="display-italic">için.</span>
-          </h3>
-          <ul class="filter-list">
-            <li>Eski sürümünün hayatını yaşadığını biliyorsan, bu farkındalığa rağmen taşınamadıysan.</li>
-            <li>Kendine söz verip tutmadığın için, o sözlerin değer kaybettiğini fark ettiysen.</li>
-            <li>Eski versiyonun seni geri çağırıyor ama yeni versiyonun adı bile yokken bu uçurum seni rahatsız ediyorsa.</li>
-            <li>Etrafındaki çoğu insan seni eski versiyonunda tutmaya programlandığını seziyorsan.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-20 inline-cta-wrap reveal">
-        <div class="inline-cta-text">
-          Doğru adresteysen, <em>başla.</em> Yanlış adresteysen, kapat ve unut.
-        </div>
-        <a href="https://eraysona.lemonsqueezy.com/checkout/buy/f8c5081a-630f-4d14-a8f0-70f0c569b1a5" class="cta" data-magnetic>
-          <span>İçerideyim, $6 USD</span>
-          <span class="cta-arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PULL QUOTE -->
-  <section class="px-6 py-20 sm:py-32 border-t border-ink/15 bg-cream">
-    <div class="max-w-[1200px] mx-auto reveal">
-      <p class="pull">
-        100 gün sonra, geri dönmek için <span class="display-outline">para</span> ödesen<br>geri dönmezsin.
-      </p>
-    </div>
-  </section>
-
-  <!-- § 05 / FİYAT -->
-  <section class="px-6 py-24 sm:py-36 border-t border-ink/15 relative">
-    <div class="max-w-[1400px] mx-auto">
-
-      <div class="text-center mb-12">
-        <div class="sec-label text-mute mb-4 reveal">§ 05 / 06 · Karar</div>
-        <div class="sec-num reveal" style="font-size: clamp(5rem, 16vw, 14rem);">05</div>
-      </div>
-
-      <div class="max-w-3xl mx-auto reveal">
-        <div class="border-y-2 border-ink py-16 px-8 text-center relative">
-          <div class="mono text-[0.7rem] tracking-[0.3em] uppercase text-mute mb-8">
-            Rekonstrüksiyon · v1.0 · Tek seferlik
-          </div>
-
-          <div class="display flex items-baseline justify-center gap-3" style="font-size: clamp(6rem, 18vw, 14rem);">
-            <span style="font-size: 0.5em; vertical-align: top;">$</span>
-            <span data-target="6">0</span>
-            <span class="mono text-2xl text-mute" style="letter-spacing: 0.1em;">USD</span>
-          </div>
-
-          <p class="text-mute italic text-lg mt-2">
-            yaklaşık 250 ₺ · ömür boyu erişim
-          </p>
-
-          <div class="mt-8 mono text-[0.7rem] tracking-[0.25em] uppercase text-mute flex flex-wrap justify-center gap-x-4 gap-y-2">
-            <span>108 sayfa</span>
-            <span class="opacity-30">/</span>
-            <span>8 PDF</span>
-            <span class="opacity-30">/</span>
+        <div class="card-body">
+          <span class="card-tag">100 Günlük Protokol</span>
+          <h2 class="card-title">Rekonstrüksiyon</h2>
+          <p class="card-desc">100 günde eski sürümünü sil. Motivasyon değil; mimari.</p>
+          <div class="specs">
+            <span>108 sayfa</span><span class="sep">·</span>
+            <span>8 PDF</span><span class="sep">·</span>
             <span>8 diyagram</span>
-            <span class="opacity-30">/</span>
-            <span>anlık teslim</span>
           </div>
-
-          <div class="mt-12">
-            <a href="https://eraysona.lemonsqueezy.com/checkout/buy/f8c5081a-630f-4d14-a8f0-70f0c569b1a5" class="cta cta-large" data-magnetic>
-              <span>Şimdi eriş</span>
-              <span class="cta-arrow">→</span>
-            </a>
-          </div>
-
-          <p class="mono text-[0.65rem] tracking-[0.2em] uppercase text-mute mt-8 max-w-md mx-auto">
-            Lemon Squeezy üzerinden güvenli ödeme. Onaydan sonra dosyalar e-postanıza iletilir.
-          </p>
+          <span class="btn">İncele — $6 USD <span class="arrow">→</span></span>
+          <div class="price-note">Anlık dijital teslim</div>
         </div>
-      </div>
-    </div>
-  </section>
+      </a>
 
-  <!-- § 06 / SSS -->
-  <section class="px-6 py-24 sm:py-36 border-t border-ink/15 relative">
-    <div class="max-w-[1400px] mx-auto">
-
-      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
-        <div class="lg:col-span-5 lg:sticky lg:top-12 self-start">
-          <div class="sec-label text-mute mb-4 reveal">§ 06 / 06 · SSS</div>
-          <div class="sec-num sec-num-outline reveal">06</div>
-          <h2 class="display mt-8 reveal reveal-delay-1" style="font-size: clamp(2rem, 4.5vw, 3.5rem);">
-            Açıklığa <span class="display-italic">ihtiyacın</span> olduğunda.
-          </h2>
-        </div>
-
-        <div class="lg:col-span-7 reveal reveal-delay-2">
-          <div class="faq-item open">
-            <div class="faq-q">
-              <div class="faq-num">01</div>
-              <div>Niye PDF, niye video yok?</div>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-a">
-              Çünkü video pasif tüketime girer. Bu protokol aktif uygulama gerektiriyor; kalemle işaretleyebileceğin, defter kenarına notlanabileceğin, geri dönebileceğin bir formata ihtiyacı var. Video ekran karşısında "yapmış" hissi yaratır; bu kitabın açıkça düşman saydığı duygu.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-q">
-              <div class="faq-num">02</div>
-              <div>Geri ödeme garantisi var mı?</div>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-a">
-              Yok. Çünkü dijital teslim geri alınamaz; bir kez okuduğun bilgi, ödenmiş bilgidir. Bu kitabı satın alma kararı, geri çekilmesi olmayan bir karar olarak verilir; bu yaklaşım, dönüşümün kendisinin de yaklaşımıdır.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-q">
-              <div class="faq-num">03</div>
-              <div>Ne kadar sürede teslim edilir?</div>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-a">
-              Anlık. Ödeme onaylandığında 8 PDF'in indirme bağlantısı e-postana iletilir. Lemon Squeezy bunu otomatik yapar; bekleme yok.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-q">
-              <div class="faq-num">04</div>
-              <div>Mobile / tablet'te okunur mu?</div>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-a">
-              Evet, PDF formatı tüm cihazlarda açılır. Ama uyarı: ekran üzerinde okumak (kalemle işaretleyemediğin için) pasif okumaya yatkındır. Özellikle Acil Müdahale Kılavuzu'nun yazıcıdan basılması net şekilde önerilir.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-q">
-              <div class="faq-num">05</div>
-              <div>Daha önce başka self-help kitap denedim, işe yaramadı.</div>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-a">
-              Yaramaz. Çünkü self-help kitaplarının %90'ı motivasyon satar; bu kitap motivasyon satmaz. Kitabın açılışındaki üç gerçek mesele tam olarak bunu anlatır: niye self-help endüstrisinin ekonomik modeli, senin değişmemen üzerine kurulu. Bu kitap o modelin kasıtlı olarak dışında.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-q">
-              <div class="faq-num">06</div>
-              <div>100 gün sonra ne olacak?</div>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-a">
-              Kararı sen vereceksin. Bazı okuyucular ikinci bir 100 günle uzatır (yeni sütunlara odaklanarak). Bazıları konsolidasyona geçer. Bu kitap 100 gün protokolü; sonrası protokol değil, hayat.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-q">
-              <div class="faq-num">07</div>
-              <div>Yazarı kim?</div>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-a">
-              Anonim. Bu seçim bilinçli; kitap, yazarın otoritesinden değil, sistem tasarımının kendisinden değer alır. <em>İçerideki argümanlar test edilmiştir; kim söylediğinden bağımsız doğru ya da yanlıştır.</em>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="asterism">✦ ✦ ✦</div>
-
-  <!-- FINAL CTA -->
-  <section id="final-cta" class="final-cta-section px-6 py-32 sm:py-48 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-15">
-      <img src="profil.jpg" class="w-full h-full object-cover" alt="" />
-    </div>
-
-    <div class="max-w-[1400px] mx-auto relative z-10">
-      <div class="mono text-[0.7rem] tracking-[0.3em] uppercase opacity-60 mb-8 reveal">
-        Karar Anı / Final
+      <!-- Placeholder -->
+      <div class="soon">
+        <div class="plus">+</div>
+        <div class="label">Yeni ürün yakında</div>
       </div>
 
-      <h2 class="display reveal" style="font-size: clamp(3rem, 9vw, 8rem); color: white;">
-        Yıkım haftası<br>
-        <span class="display-italic">72 saat sonra</span><br>
-        başlayabilir.
-      </h2>
-
-      <p class="mt-12 text-2xl italic opacity-80 max-w-2xl leading-snug reveal reveal-delay-1">
-        Bu cümleyi okuduğun anda, eski sürümünün sayılı günleri var.
-      </p>
-
-      <div class="mt-16 flex flex-col sm:flex-row gap-6 sm:items-center reveal reveal-delay-2">
-        <a href="https://eraysona.lemonsqueezy.com/checkout/buy/f8c5081a-630f-4d14-a8f0-70f0c569b1a5" class="cta cta-invert cta-large" data-magnetic>
-          <span>Protokole eriş, $6 USD</span>
-          <span class="cta-arrow">→</span>
-        </a>
-        <p class="mono text-[0.7rem] tracking-[0.2em] uppercase opacity-60">
-          Anlık dijital teslim
-        </p>
-      </div>
     </div>
-  </section>
+  </main>
 
-  <footer class="px-6 py-10 border-t border-ink">
-    <div class="max-w-[1400px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div class="mono text-[0.7rem] tracking-[0.25em] uppercase">Rekonstrüksiyon · v1.0</div>
-      <div class="mono text-[0.65rem] tracking-[0.2em] text-mute uppercase">
-        Lemon Squeezy üzerinden · &copy; 2026
-      </div>
-    </div>
+  <footer>
+    <div>Katalog · &copy; 2026</div>
   </footer>
 
-  <div class="sticky-cta" id="stickyCta">
-    <a href="https://eraysona.lemonsqueezy.com/checkout/buy/f8c5081a-630f-4d14-a8f0-70f0c569b1a5">
-      <div class="flex items-center gap-4">
-        <span class="label">Rekonstrüksiyon · 100 Günde Eski Sürümünü Sil</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <span class="price">$6 USD</span>
-        <span class="cta-arrow">→</span>
-      </div>
-    </a>
-  </div>
-
-  <script>
-    // Custom cursor
-    const cursorDot = document.getElementById('cursorDot');
-    const cursorRing = document.getElementById('cursorRing');
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
-
-    if (window.matchMedia('(hover: hover)').matches) {
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        // Dot follows instantly
-        cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-      });
-
-      // Ring follows with slight lag
-      const animateRing = () => {
-        ringX += (mouseX - ringX) * 0.14;
-        ringY += (mouseY - ringY) * 0.14;
-        cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-        requestAnimationFrame(animateRing);
-      };
-      animateRing();
-
-      document.querySelectorAll('a, button, .faq-q, [data-magnetic]').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          cursorDot.classList.add('hover');
-          cursorRing.classList.add('hover');
-        });
-        el.addEventListener('mouseleave', () => {
-          cursorDot.classList.remove('hover');
-          cursorRing.classList.remove('hover');
-        });
-      });
-    }
-
-    // Magnetic CTA
-    document.querySelectorAll('[data-magnetic]').forEach(el => {
-      el.addEventListener('mousemove', (e) => {
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        el.style.transform = `translate(${x * 0.15}px, ${y * 0.2}px)`;
-      });
-      el.addEventListener('mouseleave', () => {
-        el.style.transform = '';
-      });
-    });
-
-    // Scroll progress
-    const progress = document.getElementById('progress');
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement;
-      const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
-      progress.style.transform = `scaleX(${scrolled})`;
-    }, { passive: true });
-
-    // Reveal on scroll
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          revealObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    // Stat counter
-    const animateNum = (el) => {
-      const target = parseInt(el.dataset.target, 10);
-      const duration = 1400;
-      const start = performance.now();
-      const tick = (now) => {
-        const t = Math.min(1, (now - start) / duration);
-        const eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = Math.floor(eased * target);
-        if (t < 1) requestAnimationFrame(tick);
-        else el.textContent = target;
-      };
-      requestAnimationFrame(tick);
-    };
-
-    const statObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          animateNum(e.target);
-          statObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('[data-target]').forEach(el => statObs.observe(el));
-
-    // Sticky bottom CTA
-    const stickyCta = document.getElementById('stickyCta');
-    const finalCta = document.getElementById('final-cta');
-
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      const finalRect = finalCta.getBoundingClientRect();
-      const wh = window.innerHeight;
-
-      if (scrolled > wh * 0.6 && finalRect.top > wh * 0.5) {
-        stickyCta.classList.add('show');
-      } else {
-        stickyCta.classList.remove('show');
-      }
-    }, { passive: true });
-
-    // FAQ
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.querySelector('.faq-q').addEventListener('click', () => {
-        item.classList.toggle('open');
-      });
-    });
-
-    // Parallax
-    const parallaxEls = document.querySelectorAll('[data-parallax]');
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      parallaxEls.forEach(el => {
-        const speed = parseFloat(el.dataset.parallax);
-        el.style.transform = `translateY(${scrolled * speed * -0.3}px)`;
-      });
-    }, { passive: true });
-  </script>
 </body>
 </html>
