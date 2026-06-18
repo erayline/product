@@ -1,8 +1,12 @@
+.DS_Store
 *.print.html
+*.links.html
 kettlebell-program.pdf
+kettlebell-program-links.pdf
 kettlebell-program.book.html
 program.zip
 *.zip
 kettlebell-program.md
 assets/ex/
 build_pdf.py
+build_pdf_links.py
